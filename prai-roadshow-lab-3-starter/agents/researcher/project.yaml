@@ -1,0 +1,5 @@
+kind: Project
+name: researcher-project
+agents:
+  - name: researcher
+    path: agent.py

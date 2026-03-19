@@ -1,0 +1,5 @@
+kind: Project
+name: roadshow-lab
+agents:
+  - name: researcher
+    path: agents/researcher/agent.py

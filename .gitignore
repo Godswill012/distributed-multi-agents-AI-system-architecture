@@ -1,0 +1,19 @@
+# Python
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Env / secrets
+.env
+*.json
+
+# Terraform
+**/.terraform/
+**/terraform.tfstate*
+**/.terraform.lock.hcl
+
+# OS / misc
+*.log
+.DS_Store

@@ -1,0 +1,6 @@
+google-adk
+uvicorn
+fastapi
+click
+anyio
+
