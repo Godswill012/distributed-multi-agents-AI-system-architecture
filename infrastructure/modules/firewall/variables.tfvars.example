@@ -1,0 +1,14 @@
+project = "your-gcp-project-id"
+name    = "allow-ssh-http"
+# network: set to module.vpc.self_link in your environment main.tf
+# network = module.vpc.self_link
+
+# allow accepts list of objects: { protocol = "tcp", ports = ["22"] }
+allow = [
+  { protocol = "tcp", ports = ["22"] },
+  { protocol = "tcp", ports = ["80", "443"] },
+]
+
+direction = "INGRESS"
+source_ranges = ["0.0.0.0/0"]
+target_tags = []

@@ -1,0 +1,38 @@
+project = "your-gcp-project-id"
+name    = "dev-gke"
+region  = "us-central1"
+# network/subnetwork: set to module.vpc.self_link and module.subnet.self_link
+# network = module.vpc.self_link
+# subnetwork = module.subnet.self_link
+
+# Secondary ranges created on the subnetwork for IP aliasing
+cluster_secondary_range_name  = "pods-range"
+services_secondary_range_name = "services-range"
+
+# Node pool settings
+node_machine_type = "e2-medium"
+node_pool_initial_node_count = 1
+node_pool_min_count = 1
+node_pool_max_count = 3
+node_service_account_email = "" # leave empty to have module create one
+
+# Workload Identity
+enable_workload_identity = true
+# Kubernetes SA format: "namespace/name" (leave empty if binding later)
+workload_identity_k8s_sa = ""
+
+# Private cluster options
+enable_private_cluster = true
+enable_private_endpoint = false
+master_ipv4_cidr = "172.16.0.0/28"
+
+# Optional master authorized networks (list of objects { cidr_block, display_name })
+master_authorized_networks = []
+
+# IAM roles to grant to the node service account (adjust as needed)
+node_service_account_roles = [
+  "roles/container.nodeServiceAccount",
+  "roles/logging.logWriter",
+  "roles/monitoring.metricWriter",
+  "roles/storage.objectViewer",
+]

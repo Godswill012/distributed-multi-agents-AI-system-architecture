@@ -1,0 +1,10 @@
+terraform {
+  backend "gcs" {
+    # Replace the bucket and prefix with your values, then copy to backend.tf
+    bucket = "your-terraform-state-bucket"
+    prefix = "infrastructure/dev"
+  }
+}
+
+# To enable remote state, copy this file to `backend.tf` and run:
+# terraform init

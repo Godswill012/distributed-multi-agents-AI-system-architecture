@@ -1,0 +1,21 @@
+/*
+Enable these files after the GKE cluster is created. Copy to the environment root
+and update as needed.
+
+Steps:
+1. After `terraform apply` creates the cluster, copy this file to `k8s-provider.tf`.
+2. Run `terraform init` and `terraform apply` to apply the k8s resources.
+
+This provider config references the cluster outputs. Ensure you have `gcloud`/
+ADC available or configure credentials appropriately.
+*/
+
+provider "kubernetes" {
+  host  = module.gke.cluster_endpoint
+  token = data.google_client_config.default.access_token
+
+  cluster_ca_certificate = base64decode(module.gke.cluster_self_link != "" ? google_container_cluster.this.master_auth[0].cluster_ca_certificate : "")
+  load_config_file = false
+}
+
+data "google_client_config" "default" {}

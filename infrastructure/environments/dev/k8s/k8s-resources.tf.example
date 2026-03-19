@@ -1,0 +1,20 @@
+/*
+Example Kubernetes resources to create after the cluster exists.
+Copy to environment root and enable the `kubernetes` provider first.
+*/
+
+resource "kubernetes_namespace" "app" {
+  metadata {
+    name = "app"
+  }
+}
+
+resource "kubernetes_service_account" "app_sa" {
+  metadata {
+    name      = "app-sa"
+    namespace = kubernetes_namespace.app.metadata[0].name
+    annotations = {
+      "iam.gke.io/gcp-service-account" = module.gke.node_service_account_email
+    }
+  }
+}

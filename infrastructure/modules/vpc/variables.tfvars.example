@@ -1,0 +1,4 @@
+project = "your-gcp-project-id"
+name    = "dev-vpc"
+description = "Development VPC"
+routing_mode = "REGIONAL"

@@ -1,0 +1,49 @@
+project = "your-gcp-project-id"
+region  = "us-central1"
+
+# VPC
+vpc_name = "dev-vpc"
+
+# Subnet
+subnet_name = "dev-subnet"
+subnet_ip_cidr = "10.10.0.0/20"
+subnet_secondary_ranges = [
+	{ range_name = "pods-range", ip_cidr_range = "10.10.8.0/21" },
+	{ range_name = "services-range", ip_cidr_range = "10.10.16.0/24" },
+]
+
+# Firewall
+firewall_name = "allow-ssh-http"
+firewall_allow = [
+	{ protocol = "tcp", ports = ["22"] },
+	{ protocol = "tcp", ports = ["80","443"] },
+]
+
+# Cloud Router / NAT
+router_name = "dev-router"
+nat_name = "dev-nat"
+
+# GKE
+gke_name = "dev-gke"
+gke_cluster_secondary_range_name = "pods-range"
+gke_services_secondary_range_name = "services-range"
+node_machine_type = "e2-medium"
+node_pool_initial_node_count = 1
+node_pool_min_count = 1
+node_pool_max_count = 3
+enable_workload_identity = true
+enable_private_cluster = true
+enable_private_endpoint = false
+master_ipv4_cidr = "172.16.0.0/28"
+
+# Optional: k8s service account to bind for Workload Identity (namespace/name)
+workload_identity_k8s_sa = ""
+
+# Optional: add IAM roles for node service account
+node_service_account_roles = [
+	"roles/container.nodeServiceAccount",
+	"roles/logging.logWriter",
+	"roles/monitoring.metricWriter",
+	"roles/storage.objectViewer",
+]
+
