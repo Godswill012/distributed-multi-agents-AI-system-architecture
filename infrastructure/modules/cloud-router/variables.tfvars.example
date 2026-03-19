@@ -1,0 +1,6 @@
+project = "your-gcp-project-id"
+name    = "dev-router"
+# network: set to module.vpc.self_link in your environment main.tf
+# network = module.vpc.self_link
+region  = "us-central1"
+bgp_asn = 64514

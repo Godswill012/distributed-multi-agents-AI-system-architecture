@@ -7,12 +7,21 @@ __pycache__/
 
 # Env / secrets
 .env
-*.json
+# Sensitive JSON (optional refine)
+*.key.json
+*credentials*.json
 
 # Terraform
 **/.terraform/
+# keep lock file (recommended)
+# **/.terraform.lock.hcl
 **/terraform.tfstate*
-**/.terraform.lock.hcl
+**/crash.log
+
+# Terraform variable files (sensitive)
+**/terraform.tfvars
+**/*.tfvars
+**/*.tfvars.json
 
 # OS / misc
 *.log
