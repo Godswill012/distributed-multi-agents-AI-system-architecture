@@ -23,6 +23,9 @@ __pycache__/
 **/*.tfvars
 **/*.tfvars.json
 
+# Ignore backend files that may contain production bucket names / credentials
+
+
 # OS / misc
 *.log
 .DS_Store
